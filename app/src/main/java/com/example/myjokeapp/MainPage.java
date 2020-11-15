@@ -31,8 +31,7 @@ public class MainPage extends AppCompatActivity {
     }
     public void getJokes(View view) {
         progressBar.setVisibility(View.VISIBLE);
-        JsonObjectRequest jsonObjectRequest =
-                new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JSONObjectRequest jsonObjectRequest = new JSONObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {

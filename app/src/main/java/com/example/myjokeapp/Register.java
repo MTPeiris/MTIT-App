@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
     DBHelper db;
@@ -32,6 +33,23 @@ public class Register extends AppCompatActivity {
                 String s1 = mTextEmail.getText().toString();
                 String s2 = mTextPassword.getText().toString();
                 String s3 = mTextConfPassword.getText().toString();
+                if (s1.equals("")||s2.equals("")||s3.equals("")){
+                    Toast.makeText(getApplicationContext(),"Fields are empty",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if (s2.equals(s3)){
+                        Boolean checkemsil =db.checkemail(s1);
+                        if (checkemsil == true){
+                            Boolean insert = db.insert(s1,s2);
+                            if (insert==true){
+                                Toast.makeText(getApplicationContext(),"Registered Successfull",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Email Already exists",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
             }
         });
     }
