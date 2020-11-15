@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper extends SQLiteOpenHelper {
+public abstract class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context,"Login.db", null, 1);
     }
@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (ins==-1) return false;
         else return true;
     }
-    public boolean checkemail(String email);
+    public abstract boolean checkemail(String email);
     SQLiteDatabase db = this.getReadableDatabase();
     Cursor cursor = db.rawQuery("Select * from user where email=?",new String[] {email});
     if(cursor.getCount()>0 ) return false;

@@ -13,7 +13,11 @@ import org.json.JSONObject;
 public class MainPage extends AppCompatActivity {
     RequestQueue queue;
     String url ="https://official-joke-api.appspot.com/random_joke";
-    TextView txtjokes,txtid,txtType,txtSetup,txtpunch;
+    TextView textjokes;
+    TextView textid;
+    TextView textType;
+    TextView textSetup;
+    TextView textpunch;
     ProgressBar progressBar;
 
     @Override
@@ -21,11 +25,11 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         queue=Volley.newRequestQueue(this);
-        txtjokes=findViewById(R.id.txtJokes);
-        txtid=findViewById(R.id.txtID);
-        txtType=findViewById(R.id.txtType);
-        txtSetup=findViewById(R.id.txtSetup);
-        txtpunch=findViewById(R.id.txtPunch);
+        textjokes =findViewById(R.id.txtJokes);
+        textid =findViewById(R.id.textID);
+        textType =findViewById(R.id.textType);
+        textSetup =findViewById(R.id.textSetup);
+        textpunch =findViewById(R.id.textPunch);
 
         progressBar=findViewById(R.id.progressBar);
     }
@@ -35,36 +39,36 @@ public class MainPage extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        int ID=0;
+                        int JokeID=0;
                         String type,setup,punch;
                         try {
-                            ID=response.getInt("id");
-                            type=response.getString("type");
+                            JokeID=response.getInt("Jokeid");
+                            Joketype=response.getString("Joketype");
                             setup=response.getString("setup");
                             punch=response.getString("punchline");
-                            Joke joke=new Joke(ID,type,setup,punch);
-                            txtid.setText(joke.getID()+"");
-                            txtid.setVisibility(View.VISIBLE);
-                            txtType.setText(joke.getType()+"");
-                            txtType.setVisibility(View.VISIBLE);
-                            txtSetup.setText(joke.getSetup()+"");
-                            txtSetup.setVisibility(View.VISIBLE);
-                            txtpunch.setText(joke.getPunchLine()+"");
-                            txtpunch.setVisibility(View.VISIBLE);
+                            Joke joke=new Joke(JokeID,Joketype,setup,punch);
+                            textid.setText(joke.getJokeID()+"");
+                            textid.setVisibility(View.VISIBLE);
+                            textType.setText(joke.getJokeType()+"");
+                            textType.setVisibility(View.VISIBLE);
+                            textSetup.setText(joke.getSetup()+"");
+                            textSetup.setVisibility(View.VISIBLE);
+                            textpunch.setText(joke.getPunchLine()+"");
+                            textpunch.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.INVISIBLE);
                         } catch (JSONException e) {
 
                             e.printStackTrace();
                         }
 
-                        txtjokes.setText("Response: " +ID);
+                        textjokes.setText("Response: " +JokeID);
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         String err=error.toString();
-                        txtjokes.setText("Cannot Get Data: " +error.toString());
+                        textjokes.setText("Cannot Get Data: " +error.toString());
 
                     }
                 });
