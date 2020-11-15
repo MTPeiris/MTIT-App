@@ -3,14 +3,14 @@ package com.example.myjokeapp;
 public class Joke {
     private int JokeID;
     private String JokeType;
-    private String Setup;
-    private String PunchLine;
+    private String JokeSetup;
+    private String JokePunchLine;
 
-    public Joke(int Jokeid, String Joketype, String setup, String punchLine) {
+    public Joke(int Jokeid, String Joketype, String Jokesetup, String JokepunchLine) {
         this.JokeID = Jokeid;
         JokeType = Joketype;
-        Setup = setup;
-        PunchLine = punchLine;
+        JokeSetup = Jokesetup;
+        JokePunchLine = JokepunchLine;
     }
 
     public int getJokeID() {
@@ -29,19 +29,19 @@ public class Joke {
         JokeType = Joketype;
     }
 
-    public String getSetup() {
-        return Setup;
+    public String getJokeSetup() {
+        return JokeSetup;
     }
 
-    public void setSetup(String setup) {
-        Setup = setup;
+    public void setJokeSetup(String Jokesetup) {
+        JokeSetup = Jokesetup;
     }
 
-    public String getPunchLine() {
-        return PunchLine;
+    public String getJokePunchLine() {
+        return JokePunchLine;
     }
 
-    public void setPunchLine(String punchLine) {
-        PunchLine = punchLine;
+    public void setJokePunchLine(String JokepunchLine) {
+        JokePunchLine = JokepunchLine;
     }
 }

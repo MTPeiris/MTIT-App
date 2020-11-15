@@ -20,7 +20,12 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        db = new DBHelper(this);
+        db = new DBHelper(this) {
+            @Override
+            public boolean checkemail(String email) {
+                return false;
+            }
+        };
         mTextEmail = (EditText)findViewById(R.id.editText_email);
         mTextPassword = (EditText)findViewById(R.id.editText_password);
         mTextConfPassword = (EditText) findViewById(R.id.editText_cofpassword);

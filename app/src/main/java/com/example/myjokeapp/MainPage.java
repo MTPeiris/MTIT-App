@@ -1,11 +1,17 @@
 package com.example.myjokeapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,11 +20,11 @@ public class MainPage extends AppCompatActivity {
     RequestQueue queue;
     String url ="https://official-joke-api.appspot.com/random_joke";
     TextView textjokes;
-    TextView textid;
-    TextView textType;
-    TextView textSetup;
-    TextView textpunch;
-    ProgressBar progressBar;
+    TextView Joketextid;
+    TextView JoketextType;
+    TextView JoketextSetup;
+    TextView Joketextpunch;
+    ProgressBar JokeprogressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,36 +32,39 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         queue=Volley.newRequestQueue(this);
         textjokes =findViewById(R.id.txtJokes);
-        textid =findViewById(R.id.textID);
-        textType =findViewById(R.id.textType);
-        textSetup =findViewById(R.id.textSetup);
-        textpunch =findViewById(R.id.textPunch);
+        Joketextid =findViewById(R.id.textJokeID);
+        JoketextType =findViewById(R.id.textJokeType);
+        JoketextSetup =findViewById(R.id.textJokeSetup);
+        Joketextpunch =findViewById(R.id.textJokePunch);
 
-        progressBar=findViewById(R.id.progressBar);
+        JokeprogressBar=findViewById(R.id.JokeprogressBar);
     }
     public void getJokes(View view) {
-        progressBar.setVisibility(View.VISIBLE);
+        JokeprogressBar.setVisibility(View.VISIBLE);
         JSONObjectRequest jsonObjectRequest = new JSONObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-                    @Override
+
+
+
+            @Override
                     public void onResponse(JSONObject response) {
                         int JokeID=0;
-                        String type,setup,punch;
+                        String Joketype,Jokesetup,punch;
                         try {
                             JokeID=response.getInt("Jokeid");
                             Joketype=response.getString("Joketype");
-                            setup=response.getString("setup");
-                            punch=response.getString("punchline");
-                            Joke joke=new Joke(JokeID,Joketype,setup,punch);
-                            textid.setText(joke.getJokeID()+"");
-                            textid.setVisibility(View.VISIBLE);
-                            textType.setText(joke.getJokeType()+"");
-                            textType.setVisibility(View.VISIBLE);
-                            textSetup.setText(joke.getSetup()+"");
-                            textSetup.setVisibility(View.VISIBLE);
-                            textpunch.setText(joke.getPunchLine()+"");
-                            textpunch.setVisibility(View.VISIBLE);
-                            progressBar.setVisibility(View.INVISIBLE);
+                            Jokesetup=response.getString("Jokesetup");
+                            punch=response.getString("Jokepunchline");
+                            Joke joke=new Joke(JokeID,Joketype,Jokesetup,punch);
+                            Joketextid.setText(joke.getJokeID()+"");
+                            Joketextid.setVisibility(View.VISIBLE);
+                            JoketextType.setText(joke.getJokeType()+"");
+                            JoketextType.setVisibility(View.VISIBLE);
+                            JoketextSetup.setText(joke.getJokeSetup()+"");
+                            JoketextSetup.setVisibility(View.VISIBLE);
+                            Joketextpunch.setText(joke.getJokePunchLine()+"");
+                            Joketextpunch.setVisibility(View.VISIBLE);
+                            JokeprogressBar.setVisibility(View.INVISIBLE);
                         } catch (JSONException e) {
 
                             e.printStackTrace();
@@ -68,7 +77,7 @@ public class MainPage extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         String err=error.toString();
-                        textjokes.setText("Cannot Get Data: " +error.toString());
+                        textjokes.setText("Cannot Get The Data: " +error.toString());
 
                     }
                 });
@@ -76,4 +85,6 @@ public class MainPage extends AppCompatActivity {
 
 
     }
+
+
 }

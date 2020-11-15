@@ -7,7 +7,7 @@
     tools:context=".MainPage">
 
     <Button
-        android:id="@+id/button_login1"
+        android:id="@+id/btn_NewJoke"
         android:layout_width="227dp"
         android:layout_height="59dp"
         android:layout_marginStart="36dp"
@@ -18,8 +18,8 @@
         android:textColor="@color/purple_200"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textPunch"
-        app:layout_constraintTop_toBottomOf="@+id/textPunch" />
+        app:layout_constraintStart_toEndOf="@+id/textJokePunch"
+        app:layout_constraintTop_toBottomOf="@+id/textJokePunch" />
 
     <TextView
         android:id="@+id/txtJokes"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textType"
+        android:id="@+id/textJokeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,10 +46,10 @@
         android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textID" />
+        app:layout_constraintTop_toBottomOf="@+id/textJokeID" />
 
     <TextView
-        android:id="@+id/textPunch"
+        android:id="@+id/textJokePunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -57,10 +57,10 @@
         android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSetup" />
+        app:layout_constraintTop_toBottomOf="@+id/textJokeSetup" />
 
     <TextView
-        android:id="@+id/textID"
+        android:id="@+id/textJokeID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textSetup"
+        android:id="@+id/textJokeSetup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -79,17 +79,17 @@
         android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textType" />
+        app:layout_constraintTop_toBottomOf="@+id/textJokeType" />
 
     <ProgressBar
         android:visibility="invisible"
-        android:id="@+id/progressBar"
+        android:id="@+id/JokeprogressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textType" />
+        app:layout_constraintTop_toBottomOf="@+id/textJokeType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
